@@ -10,7 +10,6 @@ import SwiftUI
 
 struct WishRow: View {
   let wish: Wish
-//    @State private var Butonclick = false　
 //    日付をlong1値に直す
   static let deadLineFormatter: DateFormatter = {
     let formatter = DateFormatter()

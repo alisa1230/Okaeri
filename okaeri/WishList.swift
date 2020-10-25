@@ -20,6 +20,8 @@ struct WishList: View {
     @State var isPresented = false
     @State private var Butonclick = false
     
+    
+    
     var body: some View {
         //        var count: Int = 0
         NavigationView {
@@ -28,20 +30,24 @@ struct WishList: View {
                 if (Butonclick==true) {
                     List  {
                         //                ここに今日するタスクを入れる。
-                        Text("テスト")
+                        Text("ここにタップしたタップしたタスクを 表示させたい")
                     }
                 } else {
                 }
                 HStack{
-                    print(\Wish.title)
+//                    print(\Wish.title)
                     List{
                         ForEach(wishs, id: \.title) {
                             WishRow(wish: $0)
-                            
+
                         }
+//                        for(index,WishRow)in wishs.enumerate(){
+//                            print(index,\.title)
+//
+//                        }
                         .onDelete(perform: deleteWish)
                         .onTapGesture{
-                            print("Hello world!")
+                            
                             self.Butonclick=true
                         }
                     }
@@ -63,9 +69,16 @@ struct WishList: View {
                 .padding(.bottom)
                 
             }
-            
         }
     }
+//    Listの位置を検索
+//    func findIndex(at offsets: IndexSet){
+//        offsets.forEach{index in
+//        let wishIndex = self.wishs[index]
+//            print(wishIndex)
+//        };return findIndex(at: IndexSet)
+//    }
+    
     //    削除関数
     func deleteWish(at offsets: IndexSet) {
         offsets.forEach { index in
@@ -79,13 +92,9 @@ struct WishList: View {
     func addWish(title: String, genre: String, deadLine: Date) {
         
         let newWish = Wish(context: managedObjectContext)
-        
-        
         newWish.title = title
         //    newWish.genre = genre
         newWish.deadLine = deadLine
-        
-        
         saveContext()
     }
     
